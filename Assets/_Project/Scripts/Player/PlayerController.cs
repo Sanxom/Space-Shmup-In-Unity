@@ -146,14 +146,21 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
     {
         health -= damage;
         UIController.Instance.UpdateHealthSlider(health, maxHealth);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.Hit);
 
         if (health <= 0)
         {
-            ResetMoveVariables();
-            Instantiate(destroyEffect, transform.position, transform.rotation);
-            gameObject.SetActive(false);
-            GameManager.Instance.GameOver();
+            HandleGameOver();
         }
+    }
+
+    private void HandleGameOver()
+    {
+        ResetMoveVariables();
+        Instantiate(destroyEffect, transform.position, transform.rotation);
+        gameObject.SetActive(false);
+        GameManager.Instance.GameOver();
+        AudioManager.Instance.PlaySound(AudioManager.Instance.DeathSound);
     }
 
     private void ResetMoveVariables()
@@ -223,6 +230,7 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
         if (energy <= 10) return;
 
         isBoosting = true;
+        AudioManager.Instance.PlaySound(AudioManager.Instance.Fire);
 
         if (moveVector == Vector2.zero)
         {
@@ -252,6 +260,7 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
         if (energy <= 30) return;
 
         isSuperBoosting = true;
+        AudioManager.Instance.PlaySound(AudioManager.Instance.Fire);
 
         if (moveVector == Vector2.zero)
         {

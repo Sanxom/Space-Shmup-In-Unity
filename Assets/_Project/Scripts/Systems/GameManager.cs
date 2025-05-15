@@ -16,12 +16,14 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (!UIController.Instance.pausePanel.activeSelf)
         {
+            AudioManager.Instance.PlaySound(AudioManager.Instance.Pause);
             UIController.Instance.pausePanel.SetActive(true);
             PlayerController.Instance.DisablePlayerInput();
             Time.timeScale = 0f;
         }
         else
         {
+            AudioManager.Instance.PlaySound(AudioManager.Instance.Unpause);
             UIController.Instance.pausePanel.SetActive(false);
             PlayerController.Instance.EnablePlayerInput();
             Time.timeScale = 1f;
