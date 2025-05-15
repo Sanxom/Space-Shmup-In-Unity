@@ -27,6 +27,7 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
     private InputAction boostAction;
     private InputAction superBoostAction;
     private InputAction pauseAction;
+    private InputAction shootAction;
     private Vector2 moveVector;
     private float moveX;
     private float moveY;
@@ -62,16 +63,13 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
         boostAction = gameInput.Player.Boost;
         superBoostAction = gameInput.Player.SuperBoost;
         pauseAction = gameInput.Player.Pause;
+        shootAction = gameInput.Player.Fire;
         boostAction.performed += BoostAction_performed;
         boostAction.canceled += BoostAction_canceled;
         superBoostAction.performed += SuperBoostAction_performed;
         superBoostAction.canceled += SuperBoostAction_canceled;
         pauseAction.performed += PauseAction_performed;
-    }
-
-    private void PauseAction_performed(InputAction.CallbackContext obj)
-    {
-        GameManager.Instance.Pause();
+        shootAction.performed += ShootAction_performed;
     }
 
     private void OnDisable()
@@ -81,6 +79,7 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
         superBoostAction.performed -= SuperBoostAction_performed;
         superBoostAction.canceled -= SuperBoostAction_canceled;
         pauseAction.performed -= PauseAction_performed;
+        shootAction.performed -= ShootAction_performed;
         gameInput.Disable();
     }
 
@@ -126,6 +125,16 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
     private void SuperBoostAction_performed(InputAction.CallbackContext obj)
     {
         EnterSuperBoost();
+    }
+
+    private void ShootAction_performed(InputAction.CallbackContext obj)
+    {
+        PhaserWeapon.Instance.Shoot();
+    }
+
+    private void PauseAction_performed(InputAction.CallbackContext obj)
+    {
+        GameManager.Instance.Pause();
     }
     #endregion
 
