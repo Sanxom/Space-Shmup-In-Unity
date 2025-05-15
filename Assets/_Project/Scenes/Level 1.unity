@@ -338,6 +338,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 50076603}
   animator: {fileID: 403116544}
+  sr: {fileID: 403116543}
+  defaultMaterial: {fileID: 0}
+  whiteMaterial: {fileID: 2100000, guid: c625958e8b18eac49bfdf871954fe228, type: 2}
   destroyEffect: {fileID: 4962590862525737645, guid: c97ae07fa25c1b6418258b0599ae057a, type: 3}
   currentMoveSpeed: 0
   defaultMoveSpeed: 3
@@ -3154,7 +3157,7 @@ GameObject:
   - component: {fileID: 1738031926}
   - component: {fileID: 1738031925}
   m_Layer: 0
-  m_Name: JDSherbert - Nostalgia Music Pack - VCR Jungle
+  m_Name: Background Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

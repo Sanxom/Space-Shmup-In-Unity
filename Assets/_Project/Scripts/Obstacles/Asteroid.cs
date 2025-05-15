@@ -10,16 +10,19 @@ public class Asteroid : MonoBehaviour, ICollideable
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Sprite[] sprites;
+    [SerializeField] private Material defaultMaterial;
+    [SerializeField] private Material whiteMaterial;
 
     public void Collide()
     {
-        // TODO: Destroy the object maybe?
+        StartCoroutine(DamageFlashCoroutine());
     }
 
     private void Awake()
     {
         int randomNumber = UnityEngine.Random.Range(0, sprites.Length);
         sr.sprite = sprites[randomNumber];
+        defaultMaterial = sr.material;
 
         float pushX = UnityEngine.Random.Range(-1f, 0f);
         float pushY = UnityEngine.Random.Range(-1f, 1f);
@@ -37,5 +40,12 @@ public class Asteroid : MonoBehaviour, ICollideable
         {
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator DamageFlashCoroutine()
+    {
+        sr.material = whiteMaterial;
+        yield return new WaitForSeconds(0.2f);
+        sr.material = defaultMaterial;
     }
 }

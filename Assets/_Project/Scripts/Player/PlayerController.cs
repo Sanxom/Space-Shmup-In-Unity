@@ -8,6 +8,9 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private Material defaultMaterial;
+    [SerializeField] private Material whiteMaterial;
     [SerializeField] private GameObject destroyEffect;
     [SerializeField] private float currentMoveSpeed;
     [SerializeField] private float defaultMoveSpeed;
@@ -48,6 +51,7 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
         health = maxHealth;
         UIController.Instance.UpdateEnergySlider(energy, maxEnergy);
         UIController.Instance.UpdateHealthSlider(health, maxHealth);
+        defaultMaterial = sr.material;
     }
 
     private void OnEnable()
@@ -97,6 +101,7 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
     {
         if (collision.gameObject.TryGetComponent(out ICollideable collideable))
         {
+            collideable.Collide();
             TakeDamage(collideable.DamageAmount);
         }
     }
@@ -147,11 +152,19 @@ public class PlayerController : MonoSingleton<PlayerController>, IPlayer
         health -= damage;
         UIController.Instance.UpdateHealthSlider(health, maxHealth);
         AudioManager.Instance.PlaySound(AudioManager.Instance.Hit);
+        StartCoroutine(DamageFlashCoroutine());
 
         if (health <= 0)
         {
             HandleGameOver();
         }
+    }
+
+    private IEnumerator DamageFlashCoroutine()
+    {
+        sr.material = whiteMaterial;
+        yield return new WaitForSeconds(0.2f);
+        sr.material = defaultMaterial;
     }
 
     private void HandleGameOver()

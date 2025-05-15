@@ -1244,7 +1244,7 @@ GameObject:
   - component: {fileID: 1697641902}
   - component: {fileID: 1697641901}
   m_Layer: 0
-  m_Name: 03_Step_grass_03
+  m_Name: Button Sound Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1830,7 +1830,7 @@ GameObject:
   - component: {fileID: 1871289698}
   - component: {fileID: 1871289697}
   m_Layer: 0
-  m_Name: JDSherbert - Nostalgia Music Pack - Gameboy & A Long Car Journey
+  m_Name: Background Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
