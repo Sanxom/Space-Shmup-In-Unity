@@ -514,7 +514,7 @@ MonoBehaviour:
   maxPos: {fileID: 611429973}
   waveNumber: 0
   waves:
-  - prefab: {fileID: 4131238913161826106, guid: 46f1ecce645bcf54cbe780323fabc8c6, type: 3}
+  - prefab: {fileID: 2471999254208349853, guid: 971d4ab554786af4c988dd749b5bcae2, type: 3}
     spawnTimer: 0
     spawnInterval: 1
     objectsPerWave: 10
