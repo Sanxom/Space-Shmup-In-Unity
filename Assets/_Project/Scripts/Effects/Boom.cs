@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boom : MonoBehaviour
+namespace CodeLabTutorial
 {
-    [SerializeField] private Animator animator;
-
-    private void Start()
+    public class Boom : MonoBehaviour
     {
-        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+        [SerializeField] private Animator animator;
+
+        private void Start()
+        {
+            Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+        }
     }
 }

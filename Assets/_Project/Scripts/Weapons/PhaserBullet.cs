@@ -3,24 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaserBullet : MonoBehaviour
+namespace CodeLabTutorial
 {
-    private void Update()
+    public class PhaserBullet : MonoBehaviour
     {
-        transform.position += new Vector3(PhaserWeapon.Instance.Speed * Time.deltaTime, 0f);
-
-        if (transform.position.x > 9)
+        private void Update()
         {
-            Destroy(gameObject);
+            transform.position += new Vector3(PhaserWeapon.Instance.Speed * Time.deltaTime, 0f);
+
+            if (transform.position.x > 9)
+            {
+                ObjectPoolManager.ReturnObjectToPool(gameObject);
+            }
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out ICollideable collideable))
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            collideable.Collide();
-            Destroy(gameObject);
+            if (collision.gameObject.TryGetComponent(out ICollideable collideable))
+            {
+                collideable.Collide();
+                ObjectPoolManager.ReturnObjectToPool(gameObject);
+            }
         }
     }
 }

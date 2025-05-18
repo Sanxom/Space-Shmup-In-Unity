@@ -3,18 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Whale : MonoBehaviour
+namespace CodeLabTutorial
 {
-    private void Update()
+    public class Whale : MonoBehaviour
     {
-        float boostMultiplier = PlayerController.Instance.BoostChecking();
-        float moveX = GameManager.Instance.WorldSpeed * boostMultiplier * Time.deltaTime;
+        [SerializeField] private int returnToPoolValue;
 
-        transform.position += new Vector3(-moveX, 0);
-
-        if (transform.position.x < -12)
+        private void Update()
         {
-            Destroy(gameObject);
+            float boostMultiplier = PlayerController.Instance.BoostChecking();
+            float moveX = GameManager.Instance.WorldSpeed * boostMultiplier * Time.deltaTime;
+
+            transform.position += new Vector3(-moveX, 0);
+
+            if (transform.position.x < returnToPoolValue)
+            {
+                ObjectPoolManager.ReturnObjectToPool(gameObject);
+            }
         }
     }
 }

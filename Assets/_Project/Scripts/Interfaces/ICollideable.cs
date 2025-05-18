@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICollideable
+namespace CodeLabTutorial
 {
-    public int DamageAmount { get; set; }
+    public interface ICollideable
+    {
+        public int DamageAmount { get; set; }
 
-    public void Collide();
+        public void Collide();
+    }
 }

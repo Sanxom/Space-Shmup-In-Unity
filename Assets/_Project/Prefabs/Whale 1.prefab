@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21c53dd33555f2409ec46bcb45819e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  returnToPoolValue: -12
 --- !u!1 &4879815989570401125
 GameObject:
   m_ObjectHideFlags: 0

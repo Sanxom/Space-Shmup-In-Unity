@@ -4,28 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LostWhale : MonoBehaviour
+namespace CodeLabTutorial
 {
-    private const string LEVEL_1_COMPLETE_SCENE_NAME = "Level 1 Complete";
-
-    private void Update()
+    public class LostWhale : MonoBehaviour
     {
-        float boostMultiplier = PlayerController.Instance.BoostChecking();
-        float moveX = GameManager.Instance.WorldSpeed * boostMultiplier * Time.deltaTime;
+        [SerializeField] private int destroyXValue;
 
-        transform.position += new Vector3(-moveX, 0);
+        private const string LEVEL_1_COMPLETE_SCENE_NAME = "Level 1 Complete";
 
-        if (transform.position.x < -12)
+        private void Update()
         {
-            Destroy(gameObject);
+            float boostMultiplier = PlayerController.Instance.BoostChecking();
+            float moveX = GameManager.Instance.WorldSpeed * boostMultiplier * Time.deltaTime;
+
+            transform.position += new Vector3(-moveX, 0);
+
+            if (transform.position.x < destroyXValue)
+            {
+                Destroy(gameObject);
+            }
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out IPlayer player))
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            SceneManager.LoadScene(LEVEL_1_COMPLETE_SCENE_NAME);
+            if (collision.gameObject.TryGetComponent(out IPlayer player))
+            {
+                SceneManager.LoadScene(LEVEL_1_COMPLETE_SCENE_NAME);
+            }
         }
     }
 }

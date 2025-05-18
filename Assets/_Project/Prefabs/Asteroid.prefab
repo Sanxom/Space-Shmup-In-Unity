@@ -121,6 +121,7 @@ MonoBehaviour:
   - {fileID: 692307550, guid: 3f1602d342c297b49b0a01a3752e622b, type: 3}
   defaultMaterial: {fileID: 0}
   whiteMaterial: {fileID: 2100000, guid: c625958e8b18eac49bfdf871954fe228, type: 2}
+  returnToPoolXValue: -12
 --- !u!1 &7162947838561299393
 GameObject:
   m_ObjectHideFlags: 0

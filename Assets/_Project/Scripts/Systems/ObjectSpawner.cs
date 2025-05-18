@@ -3,63 +3,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectSpawner : MonoBehaviour
+namespace CodeLabTutorial
 {
-    [SerializeField] private Transform minPos;
-    [SerializeField] private Transform maxPos;
-    [SerializeField] private int waveNumber;
-    [SerializeField] private List<Wave> waves;
-
-    [Serializable]
-    public class Wave
+    public class ObjectSpawner : MonoBehaviour
     {
-        public GameObject prefab;
-        public Transform parentObject;
-        public float spawnTimer;
-        public float spawnInterval;
-        public int objectsPerWave;
-        public int spawnedObjectCount;
-    }
+        [SerializeField] private Transform minPos;
+        [SerializeField] private Transform maxPos;
+        [SerializeField] private int waveNumber;
+        [SerializeField] private List<Wave> waves;
 
-    private void Update()
-    {
-        WaveController();
-    }
-
-    private Vector2 RandomSpawnPoint()
-    {
-        Vector2 spawnPoint;
-
-        spawnPoint.x = minPos.position.x;
-        spawnPoint.y = UnityEngine.Random.Range(minPos.position.y, maxPos.position.y);
-
-        return spawnPoint;
-    }
-
-    private void SpawnObject(Wave wave)
-    {
-        Instantiate(wave.prefab, RandomSpawnPoint(), transform.rotation, wave.parentObject);
-        wave.spawnedObjectCount++;
-    }
-
-    private void WaveController()
-    {
-        Wave wave = waves[waveNumber];
-        float boostMultiplier = PlayerController.Instance.BoostChecking();
-        wave.spawnTimer += Time.deltaTime * boostMultiplier;
-        if (wave.spawnTimer >= wave.spawnInterval)
+        [Serializable]
+        public class Wave
         {
-            wave.spawnTimer = 0;
-            SpawnObject(wave);
+            public GameObject prefab;
+            //public Transform parentObject;
+            public float spawnTimer;
+            public float spawnInterval;
+            public int objectsPerWave;
+            public int spawnedObjectCount;
         }
 
-        if (wave.spawnedObjectCount >= wave.objectsPerWave)
+        private void Update()
         {
-            wave.spawnedObjectCount = 0;
-            waveNumber++;
-            if (waveNumber >= waves.Count)
+            WaveController();
+        }
+
+        private Vector2 RandomSpawnPoint()
+        {
+            Vector2 spawnPoint;
+
+            spawnPoint.x = minPos.position.x;
+            spawnPoint.y = UnityEngine.Random.Range(minPos.position.y, maxPos.position.y);
+
+            return spawnPoint;
+        }
+
+        private void SpawnObject(Wave wave)
+        {
+            ObjectPoolManager.SpawnObject(wave.prefab, RandomSpawnPoint(), transform.rotation);
+            wave.spawnedObjectCount++;
+        }
+
+        private void WaveController()
+        {
+            Wave wave = waves[waveNumber];
+            float boostMultiplier = PlayerController.Instance.BoostChecking();
+            wave.spawnTimer += Time.deltaTime * boostMultiplier;
+            if (wave.spawnTimer >= wave.spawnInterval)
             {
-                waveNumber = 0;
+                wave.spawnTimer = 0;
+                SpawnObject(wave);
+            }
+
+            if (wave.spawnedObjectCount >= wave.objectsPerWave)
+            {
+                wave.spawnedObjectCount = 0;
+                waveNumber++;
+                if (waveNumber >= waves.Count)
+                {
+                    waveNumber = 0;
+                }
             }
         }
     }

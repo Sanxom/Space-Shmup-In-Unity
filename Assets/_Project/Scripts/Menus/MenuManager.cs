@@ -6,26 +6,29 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+namespace CodeLabTutorial
 {
-    private const string LEVEL_1_SCENE_NAME = "Level 1";
-
-    private void Awake()
+    public class MenuManager : MonoBehaviour
     {
-        Time.timeScale = 1f;
-    }
+        private const string LEVEL_1_SCENE_NAME = "Level 1";
 
-    public void NewGame()
-    {
-        SceneManager.LoadScene(LEVEL_1_SCENE_NAME);
-    }
+        private void Awake()
+        {
+            Time.timeScale = 1f;
+        }
 
-    public void QuitGame()
-    {
-        #if UNITY_EDITOR
+        public void NewGame()
+        {
+            SceneManager.LoadScene(LEVEL_1_SCENE_NAME);
+        }
+
+        public void QuitGame()
+        {
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
             Application.Quit();
-        #endif
+#endif
+        }
     }
 }

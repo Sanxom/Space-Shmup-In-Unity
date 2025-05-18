@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaserWeapon : MonoSingleton<PhaserWeapon>
+namespace CodeLabTutorial
 {
-    [field: SerializeField] public float Speed { get; private set; }
-    [field: SerializeField] public float Damage { get; private set; }
-
-    [SerializeField] private GameObject prefab;
-
-    public void Shoot()
+    public class PhaserWeapon : MonoSingleton<PhaserWeapon>
     {
-        Instantiate(prefab, transform.position, transform.rotation);
+        [field: SerializeField] public float Speed { get; private set; }
+        [field: SerializeField] public float Damage { get; private set; }
+
+        [SerializeField] private PhaserBullet prefab;
+
+        public void Shoot()
+        {
+            ObjectPoolManager.SpawnObject(prefab, transform.position, transform.rotation);
+        }
     }
 }
