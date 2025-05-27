@@ -148,20 +148,20 @@ TextureImporter:
       name: critter1_burn_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 8
-        width: 52
-        height: 53
+        x: 0
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7fc4925485ed061f0800000000000000
-      internalID: -1053597842105873161
+      spriteID: 87ab5e8e6c75faa4d96fbbb8c897ab3d
+      internalID: -636339949
       vertices: []
       indices: 
       edges: []
@@ -170,20 +170,20 @@ TextureImporter:
       name: critter1_burn_1
       rect:
         serializedVersion: 2
-        x: 78
-        y: 6
-        width: 55
-        height: 57
+        x: 70
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 966c744f7449a8770800000000000000
-      internalID: 8613860274061428329
+      spriteID: c0a456f9854f62642851bbdb32876a47
+      internalID: -1376997155
       vertices: []
       indices: 
       edges: []
@@ -192,20 +192,20 @@ TextureImporter:
       name: critter1_burn_2
       rect:
         serializedVersion: 2
-        x: 148
-        y: 6
-        width: 55
-        height: 57
+        x: 140
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 963fc4d4515af8b50800000000000000
-      internalID: 6597673490030850921
+      spriteID: 4b5f8792e4d7d564c99f60498207150f
+      internalID: -533269042
       vertices: []
       indices: 
       edges: []
@@ -214,20 +214,20 @@ TextureImporter:
       name: critter1_burn_3
       rect:
         serializedVersion: 2
-        x: 218
-        y: 6
-        width: 55
-        height: 57
+        x: 210
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ed557a7ec3f6330b0800000000000000
-      internalID: -5750129991846767138
+      spriteID: 4e80d7bc5bac6964eb8861d0d2f5e002
+      internalID: -374058278
       vertices: []
       indices: 
       edges: []
@@ -236,20 +236,20 @@ TextureImporter:
       name: critter1_burn_4
       rect:
         serializedVersion: 2
-        x: 284
-        y: 3
-        width: 63
-        height: 64
+        x: 280
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ea32562b14de90a00800000000000000
-      internalID: 723370081591305134
+      spriteID: 7a6346de292e6a7488c6a0d28f707784
+      internalID: 546244545
       vertices: []
       indices: 
       edges: []
@@ -258,20 +258,20 @@ TextureImporter:
       name: critter1_burn_5
       rect:
         serializedVersion: 2
-        x: 354
-        y: 3
-        width: 63
-        height: 64
+        x: 350
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fad10343e55977350800000000000000
-      internalID: 6014440059211619759
+      spriteID: f48f96952b91a7545894a95789378c87
+      internalID: 104940160
       vertices: []
       indices: 
       edges: []
@@ -280,20 +280,20 @@ TextureImporter:
       name: critter1_burn_6
       rect:
         serializedVersion: 2
-        x: 422
-        y: 1
-        width: 66
-        height: 67
+        x: 420
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f855d63ebe679baf0800000000000000
-      internalID: -380141938031110769
+      spriteID: 98b4f5f298284a246939e3a8c2d226c7
+      internalID: -61897026
       vertices: []
       indices: 
       edges: []
@@ -302,20 +302,20 @@ TextureImporter:
       name: critter1_burn_7
       rect:
         serializedVersion: 2
-        x: 492
+        x: 490
         y: 0
-        width: 66
-        height: 68
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 14ae280a13a4d1e40800000000000000
-      internalID: 5628736686289775169
+      spriteID: 45a58cb0184819946bf8ba0c322a7ae4
+      internalID: -966809240
       vertices: []
       indices: 
       edges: []
@@ -324,9 +324,9 @@ TextureImporter:
       name: critter1_burn_8
       rect:
         serializedVersion: 2
-        x: 561
+        x: 560
         y: 0
-        width: 69
+        width: 70
         height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -334,10 +334,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: de0a2e5738a9c3300800000000000000
-      internalID: 233231170125603053
+      spriteID: 6738f35915b69de44b055ca98001ba85
+      internalID: 2060342883
       vertices: []
       indices: 
       edges: []
@@ -356,10 +356,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bbc338024aa10cfb0800000000000000
-      internalID: -4629671124714439493
+      spriteID: 4e30123d40e53174483d392ebd9e8f07
+      internalID: -1344555233
       vertices: []
       indices: 
       edges: []
@@ -378,10 +378,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 81f3daf0631601210800000000000000
-      internalID: 1301647177129213720
+      spriteID: 70fda2aeb5f5c9d40b0ff9c48fd9d2ad
+      internalID: 1167853448
       vertices: []
       indices: 
       edges: []
@@ -400,10 +400,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 21d381ba8b284f750800000000000000
-      internalID: 6337834305273216274
+      spriteID: 365e6c5dd3dea1146b9b26668330cd83
+      internalID: -713409844
       vertices: []
       indices: 
       edges: []
@@ -412,20 +412,20 @@ TextureImporter:
       name: critter1_burn_12
       rect:
         serializedVersion: 2
-        x: 846
-        y: 10
-        width: 57
-        height: 55
+        x: 840
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 50f0f749e89f082a0800000000000000
-      internalID: -6737110651774234875
+      spriteID: 034b0e6fbe33c6440b361e7ce1517488
+      internalID: 1679172029
       vertices: []
       indices: 
       edges: []
@@ -434,20 +434,20 @@ TextureImporter:
       name: critter1_burn_13
       rect:
         serializedVersion: 2
-        x: 921
-        y: 14
-        width: 47
-        height: 46
+        x: 910
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bf7c432507bfb94e0800000000000000
-      internalID: -1973707551837730821
+      spriteID: 9bf36fbb2d98b91419af0e8b96017563
+      internalID: 1426492795
       vertices: []
       indices: 
       edges: []
@@ -456,20 +456,20 @@ TextureImporter:
       name: critter1_burn_14
       rect:
         serializedVersion: 2
-        x: 995
-        y: 17
-        width: 39
-        height: 38
+        x: 980
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8eaf4732b47a28b00800000000000000
-      internalID: 829409222548847336
+      spriteID: 3280798bb793b164b8d9a9083fdf1ff5
+      internalID: 2044899240
       vertices: []
       indices: 
       edges: []
@@ -478,20 +478,20 @@ TextureImporter:
       name: critter1_burn_15
       rect:
         serializedVersion: 2
-        x: 1075
-        y: 27
-        width: 21
-        height: 19
+        x: 1050
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2e1db6b5ed6d3bf00800000000000000
-      internalID: 1131484181905002978
+      spriteID: adbccab7ecdac60469703440af77d955
+      internalID: 2083285384
       vertices: []
       indices: 
       edges: []
@@ -500,7 +500,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 43cc96f62565b5b4182df84c3f57a736
     internalID: 0
     vertices: []
     indices: 
@@ -508,8 +508,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":70.0,"y":70.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      critter1_burn_0: -636339949
+      critter1_burn_1: -1376997155
+      critter1_burn_10: 1167853448
+      critter1_burn_11: -713409844
+      critter1_burn_12: 1679172029
+      critter1_burn_13: 1426492795
+      critter1_burn_14: 2044899240
+      critter1_burn_15: 2083285384
+      critter1_burn_2: -533269042
+      critter1_burn_3: -374058278
+      critter1_burn_4: 546244545
+      critter1_burn_5: 104940160
+      critter1_burn_6: -61897026
+      critter1_burn_7: -966809240
+      critter1_burn_8: 2060342883
+      critter1_burn_9: -1344555233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -18,14 +18,14 @@ namespace CodeLabTutorial
         {
             if (!UIController.Instance.pausePanel.activeSelf)
             {
-                AudioManager.Instance.PlaySound(AudioManager.Instance.Pause);
+                AudioManager.Instance.PlaySound(AudioManager.Instance.PauseSound);
                 UIController.Instance.pausePanel.SetActive(true);
                 PlayerController.Instance.DisablePlayerInput();
                 Time.timeScale = 0f;
             }
             else
             {
-                AudioManager.Instance.PlaySound(AudioManager.Instance.Unpause);
+                AudioManager.Instance.PlaySound(AudioManager.Instance.UnpauseSound);
                 UIController.Instance.pausePanel.SetActive(false);
                 PlayerController.Instance.EnablePlayerInput();
                 Time.timeScale = 1f;

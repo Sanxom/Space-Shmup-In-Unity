@@ -9,9 +9,29 @@ namespace CodeLabTutorial
     {
         [SerializeField] private Animator animator;
 
-        private void Start()
+        private WaitForSeconds destroyWaitTime;
+
+        private void Awake()
         {
-            Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+            destroyWaitTime = new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        }
+
+        private void OnEnable()
+        {
+            StartCoroutine(DestroyCoroutine());
+        }
+
+        private void Update()
+        {
+            float boostMultiplier = PlayerController.Instance.BoostChecking();
+            float moveX = GameManager.Instance.WorldSpeed * boostMultiplier * Time.deltaTime;
+            transform.position += new Vector3(-moveX, 0);
+        }
+
+        private IEnumerator DestroyCoroutine()
+        {
+            yield return destroyWaitTime;
+            ObjectPoolManager.ReturnObjectToPool(gameObject);
         }
     }
 }

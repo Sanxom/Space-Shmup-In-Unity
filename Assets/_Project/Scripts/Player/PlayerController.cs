@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,12 +6,21 @@ namespace CodeLabTutorial
 {
     public class PlayerController : MonoSingleton<PlayerController>, IPlayer
     {
+        public float CurrentMoveSpeed { get => currentMoveSpeed; set => currentMoveSpeed = value; }
+        public float BoostSpeed { get => boostSpeed; private set => boostSpeed = value; }
+        public float SuperBoostSpeed { get => superBoostSpeed; private set => superBoostSpeed = value; }
+        public float DefaultMoveSpeed { get => defaultMoveSpeed; private set => defaultMoveSpeed = value; }
+        public bool IsBoosting { get => isBoosting; private set => isBoosting = value; }
+        public bool IsSuperBoosting { get => isSuperBoosting; private set => isSuperBoosting = value; }
+
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer sr;
         [SerializeField] private Material defaultMaterial;
         [SerializeField] private Material whiteMaterial;
         [SerializeField] private GameObject destroyEffect;
+        [SerializeField] private ParticleSystem engineBoostEffect;
+        [SerializeField] private ParticleSystem engineSuperBoostEffect;
         [SerializeField] private float currentMoveSpeed;
         [SerializeField] private float defaultMoveSpeed;
         [SerializeField] private float boostSpeed;
@@ -30,6 +37,7 @@ namespace CodeLabTutorial
         private InputAction superBoostAction;
         private InputAction pauseAction;
         private InputAction shootAction;
+        private Coroutine fireCoroutine;
         private Vector2 moveVector;
         private float moveX;
         private float moveY;
@@ -40,12 +48,6 @@ namespace CodeLabTutorial
         private const string MOVE_Y_ANIMATOR = "moveY";
         private const string IS_BOOSTING_ANIMATOR = "isBoosting";
         private const string IS_SUPER_BOOSTING_ANIMATOR = "isSuperBoosting";
-
-        public float BoostSpeed { get => boostSpeed; private set => boostSpeed = value; }
-        public float SuperBoostSpeed { get => superBoostSpeed; private set => superBoostSpeed = value; }
-        public float DefaultMoveSpeed { get => defaultMoveSpeed; private set => defaultMoveSpeed = value; }
-        public bool IsBoosting { get => isBoosting; private set => isBoosting = value; }
-        public bool IsSuperBoosting { get => isSuperBoosting; private set => isSuperBoosting = value; }
 
         #region Unity Callback Functions
         private void Start()
@@ -71,7 +73,8 @@ namespace CodeLabTutorial
             superBoostAction.performed += SuperBoostAction_performed;
             superBoostAction.canceled += SuperBoostAction_canceled;
             pauseAction.performed += PauseAction_performed;
-            shootAction.performed += ShootAction_performed;
+            shootAction.started += ShootAction_Started;
+            shootAction.canceled += ShootAction_Canceled;
         }
 
         private void OnDisable()
@@ -81,7 +84,7 @@ namespace CodeLabTutorial
             superBoostAction.performed -= SuperBoostAction_performed;
             superBoostAction.canceled -= SuperBoostAction_canceled;
             pauseAction.performed -= PauseAction_performed;
-            shootAction.performed -= ShootAction_performed;
+            shootAction.started -= ShootAction_Started;
             gameInput.Disable();
         }
 
@@ -129,9 +132,14 @@ namespace CodeLabTutorial
             EnterSuperBoost();
         }
 
-        private void ShootAction_performed(InputAction.CallbackContext obj)
+        private void ShootAction_Started(InputAction.CallbackContext obj)
         {
-            PhaserWeapon.Instance.Shoot();
+            StartFiring();
+        }
+
+        private void ShootAction_Canceled(InputAction.CallbackContext obj)
+        {
+            StopFiring();
         }
 
         private void PauseAction_performed(InputAction.CallbackContext obj)
@@ -139,6 +147,17 @@ namespace CodeLabTutorial
             GameManager.Instance.Pause();
         }
         #endregion
+
+        private void StartFiring()
+        {
+            fireCoroutine = StartCoroutine(PhaserWeapon.Instance.RapidFire());
+        }
+
+        private void StopFiring()
+        {
+            if (fireCoroutine != null)
+                StopCoroutine(fireCoroutine);
+        }
 
         private void ReadMoveInput()
         {
@@ -162,7 +181,7 @@ namespace CodeLabTutorial
         {
             health -= damage;
             UIController.Instance.UpdateHealthSlider(health, maxHealth);
-            AudioManager.Instance.PlaySound(AudioManager.Instance.Hit);
+            AudioManager.Instance.PlaySound(AudioManager.Instance.HitSound);
             StartCoroutine(DamageFlashCoroutine());
 
             if (health <= 0)
@@ -181,10 +200,10 @@ namespace CodeLabTutorial
         private void HandleGameOver()
         {
             ResetMoveVariables();
-            Instantiate(destroyEffect, transform.position, transform.rotation);
+            AudioManager.Instance.PlaySound(AudioManager.Instance.DeathSound);
+            ObjectPoolManager.SpawnObject(destroyEffect, transform.position, transform.rotation);
             gameObject.SetActive(false);
             GameManager.Instance.GameOver();
-            AudioManager.Instance.PlaySound(AudioManager.Instance.DeathSound);
         }
 
         private void ResetMoveVariables()
@@ -254,7 +273,8 @@ namespace CodeLabTutorial
             if (energy <= 10) return;
 
             isBoosting = true;
-            AudioManager.Instance.PlaySound(AudioManager.Instance.Fire);
+            engineBoostEffect.Play();
+            AudioManager.Instance.PlaySound(AudioManager.Instance.BoostSound);
 
             if (moveVector == Vector2.zero)
             {
@@ -284,7 +304,8 @@ namespace CodeLabTutorial
             if (energy <= 30) return;
 
             isSuperBoosting = true;
-            AudioManager.Instance.PlaySound(AudioManager.Instance.Fire);
+            engineSuperBoostEffect.Play();
+            AudioManager.Instance.PlaySound(AudioManager.Instance.BoostSound);
 
             if (moveVector == Vector2.zero)
             {

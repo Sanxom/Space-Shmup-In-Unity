@@ -9,7 +9,7 @@ namespace CodeLabTutorial
     {
         private void Update()
         {
-            transform.position += new Vector3(PhaserWeapon.Instance.Speed * Time.deltaTime, 0f);
+            transform.position += new Vector3((PhaserWeapon.Instance.Speed + MathF.Abs(PlayerController.Instance.CurrentMoveSpeed)) * Time.deltaTime, 0f);
 
             if (transform.position.x > 9)
             {
@@ -17,7 +17,7 @@ namespace CodeLabTutorial
             }
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.TryGetComponent(out ICollideable collideable))
             {
